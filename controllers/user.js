@@ -9,7 +9,7 @@ const welcome=(req,res)=>{
 const registerctrl=async(req, res) => {
   try {
     // Get user input
-    const { name, email, password } = req.body;
+    const { name, email, password, street, city } = req.body;
     // Validate user input
     if (!(email && password)) {
       res.status(400).json({
@@ -37,7 +37,8 @@ const registerctrl=async(req, res) => {
     const userdata = {
       name,
       email: email.toLowerCase(), // sanitize: convert email to lowercase
-      password: encryptedPassword
+      password: encryptedPassword,
+      address: {street, city}
     };
     // Create user in our database
     const user = await User.create(userdata);
