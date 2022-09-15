@@ -3,7 +3,7 @@ const welcome=(req,res)=>{
     res.status(200).send("welcome to node js demo");
 }
 
-const registerctrl=async (req, res) => {
+const registerctrl=(req, res) => {
   try {
     // Get user input
     const { name, email, password } = req.body;
