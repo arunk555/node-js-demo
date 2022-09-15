@@ -12,11 +12,12 @@ var allowCrossDomain = function(req, res, next) {
   }
 };
 const express=require("express");
-const user_routes = require("./routes/user");
 const app=express();
 app.use(allowCrossDomain);
 require("dotenv").config();
 require('./config/mongodb').connectdb();
+const user_routes = require("./routes/user");
+
 app.use(express.json({ limit: "50mb" }));
 
 app.use("/",user_routes);
