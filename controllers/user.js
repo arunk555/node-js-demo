@@ -1,6 +1,7 @@
-const User=require('../model/user');
 const bcryptjs=require('bcryptjs');
 const jwt=require('jsonwebtoken');
+const User=require('../model/user');
+
 const welcome=(req,res)=>{
     res.status(200).send("welcome to node js demo");
 }
