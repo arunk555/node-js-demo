@@ -10,8 +10,8 @@ const userSchema=new Schema({
     email: { type: String, required: true, unique: true, lowercase: true},
     password: { type: String, required: true},
     address: addressSchema,
-    token:{ type: String, required: true},
-    refresh_token:{ type: String, required: true},
+    token:{ type: String},
+    refresh_token:{ type: String},
     createdAt: { type: Date, immutable: true, default:()=>Date.now()},
     updatedAt: {type: Date, immutable: true, default:()=>Date.now()}
 });
