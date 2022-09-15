@@ -15,8 +15,7 @@ const registerctrl=(req, res) => {
     // Create user in our database
     const userdata = {
       name,
-      email: email.toLowerCase(), // sanitize: convert email to lowercase
-      password: encryptedPassword,
+      email: email.toLowerCase() // sanitize: convert email to lowercase
     };
     res.status(201).json(userdata);
   } catch (err) {
