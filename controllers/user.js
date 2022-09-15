@@ -23,4 +23,4 @@ const registerctrl=(req, res) => {
     console.log(err);
   }
 };
-module.exports={welcome, signup};
+module.exports={welcome, registerctrl};
