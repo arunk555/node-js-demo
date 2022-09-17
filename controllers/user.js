@@ -3,7 +3,7 @@ const jwt=require('jsonwebtoken');
 const User=require('../model/user');
 
 const welcome=(req,res)=>{
-    res.status(200).send("welcome to node js demo");
+    res.status(200).json(req.user);
 }
 
 const registerctrl=async(req, res) => {
