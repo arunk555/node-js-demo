@@ -51,12 +51,51 @@ const registerctrl=async(req, res) => {
       user.save();
     }
     res.status(201).json(user);
-  } catch (err) {
+  } catch (error) {
     console.log(err);
     res.status(400).json({
       success: "false",
-      message: err
+      message: error
     });
   }
 };
+
+const loginctrl=async(req,res)=>{
+  try{
+   const {email, password}=req.body;
+   if (!(email && password)) {
+      res.status(400).json({
+        success: "false",
+        error: {
+          statusCode: 400,
+          message: "All input is required"
+        }
+      });
+   }
+
+   const user = await User.findOne({email});
+   if(user && (await bcryptjs.compare(password,user.password))){
+    const token=jwt.sign({user_id:user._id, email},process.env.TOKEN_KEY, {expiresIn:'2h'});
+    user.token=token;
+    if(user.token) user.save();
+    res.status(201).json(user);
+   }else{
+    res.status(400).json({
+      success: "false",
+      error: {
+        statusCode: 400,
+        message: "Invalid Credentials"
+      }
+    });
+   }
+  }catch(error){
+    res.status(400).json({
+      success: "false",
+      message: error
+    });
+  }
+}
+
+
+
 module.exports={welcome, registerctrl};
