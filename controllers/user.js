@@ -98,4 +98,4 @@ const loginctrl=async(req,res)=>{
 
 
 
-module.exports={welcome, registerctrl};
+module.exports={welcome, registerctrl, loginctrl};
