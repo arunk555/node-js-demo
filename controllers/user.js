@@ -73,9 +73,9 @@ const loginctrl=async(req,res)=>{
       });
    }
 
-   const user = await User.findOne({email});
-   if(user && (await bcryptjs.compare(password,user.password))){
-    const token=jwt.sign({user_id:user._id, email},process.env.TOKEN_KEY, {expiresIn:'2h'});
+   const user = await User.findOne({ email });
+   if (user && (await bcryptjs.compare(password, user.password))) {
+    const token=jwt.sign({user_id:user._id, email:user.email},process.env.TOKEN_KEY, {expiresIn:'2h'});
     user.token=token;
     if(user.token) user.save();
     res.status(201).json(user);
