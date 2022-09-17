@@ -75,7 +75,7 @@ const loginctrl=async(req,res)=>{
 
    const user = await User.findOne({ email });
    if (user && (await bcryptjs.compare(password, user.password))) {
-    const token=jwt.sign({user_id:user._id, email},process.env.TOKEN_KEY, {expiresIn:'10s'});
+    const token=jwt.sign({user_id:user._id, email},process.env.TOKEN_KEY, {expiresIn:'30s'});
     user.token=token;
     if(user.token) user.save();
     res.status(201).json(user);
