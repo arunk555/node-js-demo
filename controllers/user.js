@@ -60,7 +60,7 @@ const registerctrl=async(req, res) => {
   }
 };
 
-const loginctrl=async(req,res)=>{
+const loginctrl=async(req,res) =>{
   try{
    const {email, password}=req.body;
    if (!(email && password)) {
